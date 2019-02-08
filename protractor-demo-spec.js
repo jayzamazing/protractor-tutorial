@@ -22,4 +22,20 @@ describe('Some simple tests for the super calculator', () => {
 		//verify the field has been changed
 		expect(await home_page.getSecond()).toEqual('3');
 	});
+	it('set operation', async () => {
+		//set the operator
+		await home_page.setOperator('-');
+		//verify that the selector was changed
+		expect(await home_page.getOperator()).toEqual('SUBTRACTION');
+	});
+	fit('calculate', async () => {
+		//set the text for the first input field
+		await home_page.setFirst(5);
+		//set the text for the first input field
+		await home_page.setSecond(3);
+		//set the operator
+		await home_page.setOperator('-');
+		await home_page.clickGo();
+		expect(await home_page.getResult()).toEqual('2');
+	});
 });

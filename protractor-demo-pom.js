@@ -4,7 +4,9 @@ class home_page {
 		//fields from the page
 		this.firstInput = element(by.model('first'));
 		this.secondInput = element(by.model('second'));
-		this.operator = element(by.model('operator'));
+		this.operators = element(by.model('operator'));
+		this.go = element(by.id('gobutton'));
+		this.result = element(by.css('h2[class="ng-binding"]'));
 	}
 	/**
 		* Async function to get the web page
@@ -44,9 +46,34 @@ class home_page {
 		async getSecond() {
 			return await this.secondInput.getAttribute('value');
 		};
-		async setOperator() {
-			
+		/**
+		* Async function to change the value of the selector
+		* @param string - numeric symbol
+		*
+		**/
+		async setOperator(operation) {
+			await this.operators.sendKeys('-');
 		};
-	
+		/**
+		* Async function to get the value of the select option
+		* @Return string - returns the string value of the selected option
+		**/
+		async getOperator() {
+			// return await this.operator.getAttribute('value');
+			return await this.operators.getAttribute('value');
+		}
+		/**
+		* Async function to click on the go button
+		**/
+		async clickGo() {
+			await this.go.click();
+		}
+		/**
+		* Async function to get the results after the go button has been pressed
+		* @Return string - numeric value
+		*/
+		async getResult() {
+			return await this.result.getText();
+		}
 };
 module.exports = new home_page();
