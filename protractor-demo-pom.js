@@ -2,12 +2,14 @@
 class home_page {
 	constructor() {
 		//fields from the page
-		let firstInput = element(by.model('first'));
-		let secondInput = element(by.model('second'));
-		/**
+		this.firstInput = element(by.model('first'));
+		this.secondInput = element(by.model('second'));
+		this.operator = element(by.model('operator'));
+	}
+	/**
 		* Async function to get the web page
 		**/
-		this.get = async () => {
+		async getWebPage() {
 			await browser.get('http://juliemr.github.io/protractor-demo');
 		};
 		/**
@@ -15,34 +17,36 @@ class home_page {
 		* @Param number - numeric value to update the field
 		*
 		**/
-		this.setFirst = async (number) => {
-			await firstInput.sendKeys(number);
-		}
+		async setFirst(number) {
+			await this.firstInput.sendKeys(number);
+		};
 		/**
 		* Async function to retrieve the value of the first input field
 		* @Return string - numeric value of the field as a string
 		*
 		**/
-		this.getFirst = async () => {
-			return await firstInput.getAttribute('value');
-		}
+		async getFirst() {
+			return await this.firstInput.getAttribute('value');
+		};
 		/**
 		* Async function to update the value of the second input field
 		* @Param number - numeric value to update the field
 		*
 		**/
-		this.setSecond = async (number) => {
-			await secondInput.sendKeys(number);
-		}
+		async setSecond(number) {
+			await this.secondInput.sendKeys(number);
+		};
 		/**
 		* Async function to retrieve the value of the second input field
 		* @Return string - numeric value of the field as a string
 		*
 		**/
-		this.getSecond = async () => {
-			return await secondInput.getAttribute('value');
-		}
-	}
+		async getSecond() {
+			return await this.secondInput.getAttribute('value');
+		};
+		async setOperator() {
+			
+		};
 	
 };
 module.exports = new home_page();

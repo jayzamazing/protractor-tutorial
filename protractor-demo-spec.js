@@ -4,7 +4,7 @@ let home_page = require('./protractor-demo-pom');
 
 describe('Some simple tests for the super calculator', () => {
 	beforeEach(async() => {
-		await home_page.get();
+		await home_page.getWebPage();
 	});
 	it('get the website to ensure it loads', async () => {
 		//check the title for the home page
